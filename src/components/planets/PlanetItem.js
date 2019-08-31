@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { ImageMap } from "./imageMap";
 
 const PlanetItem = ({ planet, removePlanet }) => {
@@ -9,6 +10,11 @@ const PlanetItem = ({ planet, removePlanet }) => {
       <h5 className="text-center">Distance : {planet.distance}</h5>
     </div>
   );
+};
+
+PlanetItem.propTypes = {
+  planet: PropTypes.object.isRequired,
+  removePlanet: PropTypes.func.isRequired
 };
 
 export default PlanetItem;

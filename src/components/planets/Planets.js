@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { Row, Col } from "antd";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
 import AutoComplete from "./AutoComplete";
 import PlanetItem from "./PlanetItem";
-
-import { connect } from "react-redux";
 import {
   getPlanets,
   selectPlanet,
@@ -59,6 +60,15 @@ const Planets = ({
       </Row>
     </div>
   );
+};
+
+Planets.propTypes = {
+  maxSelection: PropTypes.number.isRequired,
+  planets: PropTypes.array,
+  selectedPlanets: PropTypes.array,
+  getPlanets: PropTypes.func.isRequired,
+  selectPlanet: PropTypes.func.isRequired,
+  removePlanet: PropTypes.func.isRequired
 };
 
 const mapStateToParams = state => ({

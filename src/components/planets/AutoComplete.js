@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from "react";
 import SuggestionListComponent from "./SuggestionListComponent";
 import { Input } from "antd";
+import PropTypes from "prop-types";
 
 const AutoComplete = ({ suggestions, onPlanetSelect }) => {
   const [activeSuggestions, setActiveSuggestions] = useState(0);
@@ -39,6 +40,11 @@ const AutoComplete = ({ suggestions, onPlanetSelect }) => {
       )}
     </Fragment>
   );
+};
+
+AutoComplete.propTypes = {
+  suggestion: PropTypes.array.isRequired,
+  onPlanetSelect: PropTypes.func.isRequired
 };
 
 export default AutoComplete;

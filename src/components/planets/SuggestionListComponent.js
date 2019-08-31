@@ -1,5 +1,6 @@
 import React from "react";
 import { List, Avatar } from "antd";
+import PropTypes from "prop-types";
 
 const SuggestionListComponent = ({ suggestions, selectOption }) => {
   const onClick = item => {
@@ -36,6 +37,11 @@ const SuggestionListComponent = ({ suggestions, selectOption }) => {
       )}
     />
   );
+};
+
+SuggestionListComponent.propTypes = {
+  suggestions: PropTypes.array,
+  selectOption: PropTypes.func.isRequired
 };
 
 export default SuggestionListComponent;
