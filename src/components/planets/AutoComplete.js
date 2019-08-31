@@ -43,7 +43,7 @@ const AutoComplete = ({ suggestions, onPlanetSelect }) => {
 };
 
 AutoComplete.propTypes = {
-  suggestion: PropTypes.array.isRequired,
+  suggestion: PropTypes.array,
   onPlanetSelect: PropTypes.func.isRequired
 };
 

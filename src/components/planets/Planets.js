@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Row, Col } from "antd";
+import { Row, Col, message } from "antd";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
@@ -28,10 +28,10 @@ const Planets = ({
       if (selectedPlanets.length < maxSelection) {
         selectPlanet(planet);
       } else {
-        console.log("please remove one planet");
+        message.warning("Please remove 1 planet");
       }
     } else {
-      console.log("planet already exits");
+      message.warning("Planet already exits");
     }
   };
 
@@ -41,14 +41,19 @@ const Planets = ({
 
   return (
     <div
-      style={{ backgroundColor: "black", position: "relative", top: "30vh" }}
+      style={{ backgroundColor: "black", position: "relative", top: "27vh" }}
     >
-      <AutoComplete suggestions={planets} onPlanetSelect={onPlanetSelect} />
       <Row>
+        <Col xs={2} md={8}></Col>
+        <Col xs={20} md={8}>
+          <AutoComplete suggestions={planets} onPlanetSelect={onPlanetSelect} />
+        </Col>
+      </Row>
+      <Row style={{ padding: "8%" }}>
         {selectedPlanets &&
           selectedPlanets.map((planet, index) => {
             return (
-              <Col span={6} key={index}>
+              <Col lg={6} xs={12} md={6} key={index}>
                 <PlanetItem
                   planet={planet}
                   key={index}
