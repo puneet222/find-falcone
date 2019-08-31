@@ -2,7 +2,9 @@ import {
   GET_PLANETS,
   GET_PLANETS_ERROR,
   GET_VEHICLES,
-  SET_LOADING
+  SET_LOADING,
+  SELECT_PLANET,
+  REMOVE_PLANET
 } from "../actions/types";
 
 const initialState = {
@@ -34,6 +36,20 @@ export default (state = initialState, action) => {
       return {
         ...state,
         error: action.payload
+      };
+    }
+    case SELECT_PLANET: {
+      return {
+        ...state,
+        selectedPlanets: [...state.selectedPlanets, action.payload]
+      };
+    }
+    case REMOVE_PLANET: {
+      return {
+        ...state,
+        selectedPlanets: state.selectedPlanets.filter(
+          planet => planet.name !== action.payload.name
+        )
       };
     }
     default:
