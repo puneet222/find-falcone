@@ -14,21 +14,36 @@ function App() {
   const maxSelection = 4;
   return (
     <Provider store={store}>
-      <div className="App">
-        <Layout className="layout">
-          <Navbar />
-          <Content
-            style={{
-              padding: "0 50px",
-              height: "100vh",
-              backgroundColor: "black"
-            }}
-          >
-            <Planets maxSelection={maxSelection} />
-          </Content>
-          <Footer />
-        </Layout>
-      </div>
+      <Router>
+        <div className="App">
+          <Layout className="layout">
+            <Navbar />
+            <Content
+              style={{
+                padding: "0 50px",
+                height: "100vh",
+                backgroundColor: "black"
+              }}
+            >
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  render={props => <Planets maxSelection={maxSelection} />}
+                />
+                <Route
+                  exact
+                  path="/vehicle"
+                  render={props => (
+                    <Planets {...props} maxSelection={maxSelection} />
+                  )}
+                />
+              </Switch>
+            </Content>
+            <Footer />
+          </Layout>
+        </div>
+      </Router>
     </Provider>
   );
 }

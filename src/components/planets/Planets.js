@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Row, Col, message } from "antd";
+import { Row, Col, message, Button } from "antd";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
@@ -63,6 +63,11 @@ const Planets = ({
             );
           })}
       </Row>
+      {selectedPlanets.length === 4 && (
+        <Button type="primary" shape="round" icon="cloud-upload" size={"large"}>
+          Pick Rockets
+        </Button>
+      )}
     </div>
   );
 };
