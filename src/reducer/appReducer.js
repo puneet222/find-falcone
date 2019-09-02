@@ -5,8 +5,13 @@ import {
   GET_VEHICLES_ERROR,
   SET_LOADING,
   SELECT_PLANET,
-  REMOVE_PLANET
+  REMOVE_PLANET,
+  ASSIGN_VEHICLE,
+  UNASSIGN_VEHICLE,
+  INCREMENT_VEHICLE_COUNT,
+  DECREMENT_VEHICLE_COUNT
 } from "../actions/types";
+import { stat } from "fs";
 
 const initialState = {
   token: null,
@@ -14,8 +19,9 @@ const initialState = {
   planets: [],
   error: null,
   vehicles: [],
+  availableVehicles: [],
   selectedPlanets: [],
-  selectedVehicle: []
+  selectedVehicles: {}
 };
 
 export default (state = initialState, action) => {
@@ -58,6 +64,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         vehicles: action.payload,
+        availableVehicles: action.payload,
         loading: false
       };
     }
@@ -68,6 +75,49 @@ export default (state = initialState, action) => {
         error: action.payload
       };
     }
+    case ASSIGN_VEHICLE: {
+      let obj = {
+        [action.payload.planet.name]: action.payload.vehicle.name
+      };
+      return {
+        ...state,
+        selectedVehicles: { ...state.selectedVehicles, ...obj }
+      };
+    }
+
+    case UNASSIGN_VEHICLE: {
+      let { [action.payload.name]: omit, ...res } = state.selectedVehicles;
+      return {
+        ...state,
+        ...res
+      };
+    }
+
+    case INCREMENT_VEHICLE_COUNT: {
+      console.log("increment : ", action.payload);
+      return {
+        ...state,
+        availableVehicles: state.availableVehicles.map(vehicle => {
+          if (vehicle.name === action.payload) {
+            vehicle.total_no++;
+          }
+          return vehicle;
+        })
+      };
+    }
+
+    case DECREMENT_VEHICLE_COUNT: {
+      return {
+        ...state,
+        availableVehicles: state.availableVehicles.map(vehicle => {
+          if (vehicle.name === action.payload) {
+            vehicle.total_no--;
+          }
+          return vehicle;
+        })
+      };
+    }
+
     default:
       return state;
   }

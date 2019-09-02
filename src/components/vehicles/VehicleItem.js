@@ -1,9 +1,19 @@
 import React, { useState } from "react";
-import { Avatar, Badge, Row, Col } from "antd";
+import { Avatar, Badge, Row, Col, message } from "antd";
+import { connect } from "react-redux";
+import { unassignVehicle, assignVehicle } from "../../actions/vechicleActions";
 
 import { ImageMap } from "./imageMap";
 
-const VehicleItem = ({ vehicle }) => {
+const VehicleItem = ({
+  vehicle,
+  planet,
+  incrementVehicle,
+  decrementVehicle,
+  selectedVehicles,
+  assignVehicle,
+  unassignVehicle
+}) => {
   const [hover, setHover] = useState(false);
   let commonStyle = {
     border: "wheat solid 1px",
@@ -23,11 +33,32 @@ const VehicleItem = ({ vehicle }) => {
   const toggleHover = () => {
     setHover(!hover);
   };
+  const onClick = () => {
+    console.log(selectedVehicles);
+    if (vehicle.total_no > 0) {
+      if (selectedVehicles[planet.name]) {
+        incrementVehicle(selectedVehicles[planet.name]);
+        unassignVehicle(planet);
+      }
+      assignVehicle(planet, vehicle);
+      decrementVehicle(vehicle.name);
+    } else {
+      message.warning("Insufficient Quantity");
+    }
+    console.log(selectedVehicles);
+  };
   return (
     <div
-      style={hover ? hoverListStyle : listStyle}
+      style={
+        selectedVehicles[planet.name] === vehicle.name
+          ? hoverListStyle
+          : hover
+          ? hoverListStyle
+          : listStyle
+      }
       onMouseEnter={toggleHover}
       onMouseLeave={toggleHover}
+      onClick={onClick}
       key={vehicle.name}
     >
       <Row>
@@ -45,4 +76,11 @@ const VehicleItem = ({ vehicle }) => {
   );
 };
 
-export default VehicleItem;
+const mapStateToProps = state => ({
+  selectedVehicles: state.app.selectedVehicles
+});
+
+export default connect(
+  mapStateToProps,
+  { assignVehicle, unassignVehicle }
+)(VehicleItem);
