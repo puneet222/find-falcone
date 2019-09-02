@@ -4,7 +4,6 @@ import { Input } from "antd";
 import PropTypes from "prop-types";
 
 const AutoComplete = ({ suggestions, onPlanetSelect }) => {
-  const [activeSuggestions, setActiveSuggestions] = useState(0);
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [userInput, setUserInput] = useState("");
@@ -18,14 +17,12 @@ const AutoComplete = ({ suggestions, onPlanetSelect }) => {
     setFilteredSuggestions(filteredSuggestions);
     setUserInput(userInput);
     setShowSuggestions(true);
-    setActiveSuggestions(0);
   };
 
   const selectOption = planet => {
     setFilteredSuggestions([]);
     setUserInput("");
     setShowSuggestions(false);
-    setActiveSuggestions(0);
     onPlanetSelect(planet);
   };
 

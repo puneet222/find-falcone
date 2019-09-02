@@ -20,7 +20,7 @@ const PlanetItem = ({ planet, removePlanet }) => {
 
 PlanetItem.propTypes = {
   planet: PropTypes.object.isRequired,
-  removePlanet: PropTypes.func.isRequired
+  removePlanet: PropTypes.func
 };
 
 export default PlanetItem;

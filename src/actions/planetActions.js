@@ -13,7 +13,6 @@ export const getPlanets = () => async dispatch => {
   try {
     setLoading();
     const res = await axios.get(GET_PLANETS_API);
-    console.log(res);
     dispatch({
       type: GET_PLANETS,
       payload: res.data

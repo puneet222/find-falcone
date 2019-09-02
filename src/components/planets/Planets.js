@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Row, Col, message, Button } from "antd";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import AutoComplete from "./AutoComplete";
 import PlanetItem from "./PlanetItem";
@@ -63,10 +64,17 @@ const Planets = ({
             );
           })}
       </Row>
-      {selectedPlanets.length === 4 && (
-        <Button type="primary" shape="round" icon="cloud-upload" size={"large"}>
-          Pick Rockets
-        </Button>
+      {selectedPlanets.length === maxSelection && (
+        <Link to="/vehicles">
+          <Button
+            type="primary"
+            shape="round"
+            icon="cloud-upload"
+            size={"large"}
+          >
+            Pick Rockets
+          </Button>
+        </Link>
       )}
     </div>
   );

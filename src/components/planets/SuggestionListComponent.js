@@ -26,7 +26,11 @@ const SuggestionListComponent = ({ suggestions, selectOption }) => {
           <List.Item.Meta
             avatar={<Avatar src={ImageMap[item.name]} />}
             title={
-              <a style={{ color: "white" }} onClick={() => onClick(item)}>
+              <a
+                href="#!"
+                style={{ color: "white" }}
+                onClick={() => onClick(item)}
+              >
                 <span style={{ color: "black" }}>{item.name}</span>
                 <span style={{ color: "grey" }}>{item.distance}</span>
               </a>

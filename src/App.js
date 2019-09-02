@@ -1,13 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout } from "antd";
 import { Provider } from "react-redux";
 import { store } from "./store";
 
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Planets from "./components/planets/Planets";
+import Vehicles from "./components/vehicles/Vehicles";
 
 function App() {
   const { Content } = Layout;
@@ -18,6 +19,7 @@ function App() {
         <div className="App">
           <Layout className="layout">
             <Navbar />
+            {/* <Vehicles /> */}
             <Content
               style={{
                 padding: "0 50px",
@@ -33,9 +35,9 @@ function App() {
                 />
                 <Route
                   exact
-                  path="/vehicle"
+                  path="/vehicles"
                   render={props => (
-                    <Planets {...props} maxSelection={maxSelection} />
+                    <Vehicles {...props} maxSelection={maxSelection} />
                   )}
                 />
               </Switch>

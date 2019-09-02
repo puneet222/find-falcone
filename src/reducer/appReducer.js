@@ -2,6 +2,7 @@ import {
   GET_PLANETS,
   GET_PLANETS_ERROR,
   GET_VEHICLES,
+  GET_VEHICLES_ERROR,
   SET_LOADING,
   SELECT_PLANET,
   REMOVE_PLANET
@@ -23,6 +24,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         planets: action.payload,
+        selectedPlanets: action.payload,
         loading: false
       };
     }
@@ -50,6 +52,20 @@ export default (state = initialState, action) => {
         selectedPlanets: state.selectedPlanets.filter(
           planet => planet.name !== action.payload.name
         )
+      };
+    }
+    case GET_VEHICLES: {
+      return {
+        ...state,
+        vehicles: action.payload,
+        loading: false
+      };
+    }
+    case GET_VEHICLES_ERROR: {
+      return {
+        ...state,
+        vehicles: [],
+        error: action.payload
       };
     }
     default:
