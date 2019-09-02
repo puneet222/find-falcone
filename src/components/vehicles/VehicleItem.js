@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Avatar, Badge, Row, Col, message, Button } from "antd";
 import { connect } from "react-redux";
-import { unassignVehicle, assignVehicle } from "../../actions/vechicleActions";
+import PropTypes from "prop-types";
 
+import { unassignVehicle, assignVehicle } from "../../actions/vechicleActions";
 import { ImageMap } from "./imageMap";
 
 const VehicleItem = ({
@@ -34,7 +35,6 @@ const VehicleItem = ({
     setHover(!hover);
   };
   const onClick = () => {
-    console.log(selectedVehicles);
     if (vehicle.total_no > 0) {
       if (selectedVehicles[planet.name]) {
         incrementVehicle(selectedVehicles[planet.name]);
@@ -45,7 +45,6 @@ const VehicleItem = ({
     } else {
       message.warning("Insufficient Quantity");
     }
-    console.log(selectedVehicles);
   };
   return (
     <div
@@ -74,6 +73,16 @@ const VehicleItem = ({
       </Row>
     </div>
   );
+};
+
+VehicleItem.propTypes = {
+  vehicle: PropTypes.object.isRequired,
+  planet: PropTypes.object.isRequired,
+  incrementVehicle: PropTypes.func.isRequired,
+  decrementVehicle: PropTypes.func.isRequired,
+  selectedVehicles: PropTypes.object,
+  assignVehicle: PropTypes.func.isRequired,
+  unassignVehicle: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

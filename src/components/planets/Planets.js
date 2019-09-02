@@ -89,7 +89,8 @@ Planets.propTypes = {
   selectedPlanets: PropTypes.array,
   getPlanets: PropTypes.func.isRequired,
   selectPlanet: PropTypes.func.isRequired,
-  removePlanet: PropTypes.func.isRequired
+  removePlanet: PropTypes.func.isRequired,
+  getToken: PropTypes.func.isRequired
 };
 
 const mapStateToParams = state => ({

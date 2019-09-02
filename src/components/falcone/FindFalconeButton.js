@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const FindFalconeButton = ({ selectedVehicles, maxSelection }) => {
   const buttonStyle = {
@@ -24,6 +25,11 @@ const FindFalconeButton = ({ selectedVehicles, maxSelection }) => {
       </Link>
     )
   );
+};
+
+FindFalconeButton.propTypes = {
+  selectedVehicles: PropTypes.object.isRequired,
+  maxSelection: PropTypes.number.isRequired
 };
 
 export default FindFalconeButton;

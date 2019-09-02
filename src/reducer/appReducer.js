@@ -26,7 +26,7 @@ const initialState = {
   selectedPlanets: [],
   selectedVehicles: {},
   falconePlanet: null,
-  falconeSuccess: false
+  falconeSuccess: null
 };
 
 export default (state = initialState, action) => {

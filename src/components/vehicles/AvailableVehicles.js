@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import VehicleItem from "./VehicleItem";
 
 const AvailableVehicles = ({
@@ -27,6 +28,13 @@ const AvailableVehicles = ({
         })}
     </div>
   );
+};
+
+AvailableVehicles.propTypes = {
+  vehicles: PropTypes.array.isRequired,
+  planet: PropTypes.object.isRequired,
+  incrementVehicle: PropTypes.func.isRequired,
+  decrementVehicle: PropTypes.func.isRequired
 };
 
 export default AvailableVehicles;

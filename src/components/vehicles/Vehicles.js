@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Col, Button } from "antd";
+import { Col } from "antd";
+import PropTypes from "prop-types";
 
 import {
   getVehicles,
@@ -68,6 +69,17 @@ const mapStateToParams = state => ({
   selectedPlanets: state.app.selectedPlanets,
   selectedVehicles: state.app.selectedVehicles
 });
+
+Vehicles.propTypes = {
+  availableVehicles: PropTypes.array,
+  selectedPlanets: PropTypes.array,
+  selectedVehicles: PropTypes.object,
+  getVehicles: PropTypes.func.isRequired,
+  history: PropTypes.object,
+  maxSelection: PropTypes.number.isRequired,
+  incrementVehicleCount: PropTypes.func.isRequired,
+  decrementVehicleCount: PropTypes.func.isRequired
+};
 
 export default connect(
   mapStateToParams,
