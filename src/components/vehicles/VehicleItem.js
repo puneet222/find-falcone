@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Avatar, Badge, Row, Col, message, Button } from "antd";
+import { Avatar, Badge, Row, Col, message } from "antd";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 

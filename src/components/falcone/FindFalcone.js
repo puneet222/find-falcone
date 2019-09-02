@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 
 import { findFalcone } from "../../actions/appActions";
 import { ImageMap } from "../planets/imageMap";
+import "./Falcone.css";
 
 const FindFalcone = ({
   token,
@@ -20,6 +21,7 @@ const FindFalcone = ({
   Object.keys(selectedVehicles).map(key => {
     planet_names.push(key);
     vehicle_names.push(selectedVehicles[key]);
+    return key;
   });
   const data = {
     token,
@@ -29,7 +31,6 @@ const FindFalcone = ({
   const find = async data => {
     await findFalcone(data);
     setShow(true);
-    console.log("aaaaa");
   };
   useEffect(() => {
     if (!token || !Object.keys(selectedVehicles).length) {
@@ -37,6 +38,7 @@ const FindFalcone = ({
     } else {
       find(data);
     }
+    // eslint-disable-next-line
   }, []);
   const [planet, setPlanet] = useState(false);
   const [show, setShow] = useState(false);
@@ -53,7 +55,7 @@ const FindFalcone = ({
         <Col xs={20} md={12}>
           {show && (
             <Typing onFinishedTyping={showPlanet}>
-              <span style={{ color: "wheat", fontSize: "1.2em" }}>
+              <span className="fontColor message">
                 {falconeSuccess
                   ? "Congratulations!! you've successfully found Falcone in ..."
                   : "Falcone Escaped..."}
@@ -68,7 +70,7 @@ const FindFalcone = ({
             <div>
               <Avatar size={130} src={ImageMap[falconePlanet]} />
               <br />
-              <h2 style={{ color: "wheat" }}>{falconePlanet}</h2>
+              <h2 className="fontColor">{falconePlanet}</h2>
             </div>
           )}
         </Col>

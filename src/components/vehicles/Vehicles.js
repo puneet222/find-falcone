@@ -27,6 +27,7 @@ const Vehicles = ({
       history.push("/");
     }
     getVehicles();
+    // eslint-disable-next-line
   }, []);
 
   const incrementVehicle = vehicle => {
@@ -45,7 +46,7 @@ const Vehicles = ({
         selectedPlanets.map((planet, index) => {
           return (
             <Col lg={6} xs={24} md={6} key={index}>
-              <PlanetItem planet={planet} key={index} />
+              <PlanetItem planet={planet} key={index} removePlanet={() => {}} />
               <AvailableVehicles
                 planet={planet}
                 vehicles={availableVehicles}

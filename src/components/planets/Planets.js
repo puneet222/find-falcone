@@ -25,6 +25,7 @@ const Planets = ({
   useEffect(() => {
     getToken();
     getPlanets();
+    // eslint-disable-next-line
   }, []);
 
   const onPlanetSelect = planet => {

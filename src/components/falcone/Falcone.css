@@ -1,0 +1,20 @@
+.falcone-container {
+  position: "relative";
+  top: "15vh";
+  color: "wheat";
+}
+
+.fontColor {
+  color: "wheat";
+}
+
+.message {
+  font-size: 1.2em;
+}
+
+.falcone-button {
+  position: "fixed" !important;
+  z-index: "90" !important;
+  bottom: "15%" !important;
+  right: "2%" !important;
+}
