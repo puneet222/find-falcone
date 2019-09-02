@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Col } from "antd";
+import { Col, Button } from "antd";
 
 import {
   getVehicles,
@@ -9,11 +9,12 @@ import {
 } from "../../actions/vechicleActions";
 import PlanetItem from "../planets/PlanetItem";
 import AvailableVehicles from "./AvailableVehicles";
+import FindFalconeButton from "../falcone/FindFalconeButton";
 
 const Vehicles = ({
-  vehicles,
   availableVehicles,
   selectedPlanets,
+  selectedVehicles,
   getVehicles,
   history,
   maxSelection,
@@ -53,6 +54,10 @@ const Vehicles = ({
             </Col>
           );
         })}
+      <FindFalconeButton
+        selectedVehicles={selectedVehicles}
+        maxSelection={maxSelection}
+      />
     </div>
   );
 };
@@ -60,7 +65,8 @@ const Vehicles = ({
 const mapStateToParams = state => ({
   vehicles: state.app.vehicles,
   availableVehicles: state.app.availableVehicles,
-  selectedPlanets: state.app.selectedPlanets
+  selectedPlanets: state.app.selectedPlanets,
+  selectedVehicles: state.app.selectedVehicles
 });
 
 export default connect(

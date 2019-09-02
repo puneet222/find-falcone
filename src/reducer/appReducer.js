@@ -9,9 +9,12 @@ import {
   ASSIGN_VEHICLE,
   UNASSIGN_VEHICLE,
   INCREMENT_VEHICLE_COUNT,
-  DECREMENT_VEHICLE_COUNT
+  DECREMENT_VEHICLE_COUNT,
+  GET_TOKEN,
+  FIND_FALCONE_SUCCESS,
+  FIND_FALCONE_FAIL,
+  FIND_FALCONE_ERROR
 } from "../actions/types";
-import { stat } from "fs";
 
 const initialState = {
   token: null,
@@ -21,11 +24,19 @@ const initialState = {
   vehicles: [],
   availableVehicles: [],
   selectedPlanets: [],
-  selectedVehicles: {}
+  selectedVehicles: {},
+  falconePlanet: null,
+  falconeSuccess: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case GET_TOKEN: {
+      return {
+        ...state,
+        token: action.payload.token
+      };
+    }
     case GET_PLANETS: {
       return {
         ...state,
@@ -115,6 +126,22 @@ export default (state = initialState, action) => {
           }
           return vehicle;
         })
+      };
+    }
+
+    case FIND_FALCONE_SUCCESS: {
+      return {
+        ...state,
+        falconePlanet: action.payload,
+        falconeSuccess: true
+      };
+    }
+
+    case FIND_FALCONE_FAIL: {
+      return {
+        ...state,
+        falconeSuccess: false,
+        falconePlanet: null
       };
     }
 

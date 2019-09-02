@@ -9,6 +9,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Planets from "./components/planets/Planets";
 import Vehicles from "./components/vehicles/Vehicles";
+import FindFalcone from "./components/falcone/FindFalcone";
 
 function App() {
   const { Content } = Layout;
@@ -39,6 +40,11 @@ function App() {
                   render={props => (
                     <Vehicles {...props} maxSelection={maxSelection} />
                   )}
+                />
+                <Route
+                  exact
+                  path="/findFalcone"
+                  render={props => <FindFalcone {...props} />}
                 />
               </Switch>
             </Content>

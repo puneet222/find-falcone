@@ -11,6 +11,7 @@ import {
   selectPlanet,
   removePlanet
 } from "../../actions/planetActions";
+import { getToken } from "../../actions/appActions";
 
 const Planets = ({
   maxSelection,
@@ -18,9 +19,11 @@ const Planets = ({
   selectedPlanets,
   getPlanets,
   selectPlanet,
-  removePlanet
+  removePlanet,
+  getToken
 }) => {
   useEffect(() => {
+    getToken();
     getPlanets();
   }, []);
 
@@ -96,5 +99,5 @@ const mapStateToParams = state => ({
 
 export default connect(
   mapStateToParams,
-  { getPlanets, selectPlanet, removePlanet }
+  { getPlanets, selectPlanet, removePlanet, getToken }
 )(Planets);
