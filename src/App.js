@@ -20,10 +20,8 @@ function App() {
         <div className="App">
           <Layout className="layout">
             <Navbar />
-            {/* <Vehicles /> */}
             <Content
               style={{
-                padding: "0 50px",
                 height: "100vh",
                 backgroundColor: "black"
               }}
@@ -48,7 +46,7 @@ function App() {
                 />
               </Switch>
             </Content>
-            <Footer />
+            {/* <Footer /> */}
           </Layout>
         </div>
       </Router>

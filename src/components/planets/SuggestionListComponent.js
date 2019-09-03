@@ -8,21 +8,13 @@ const SuggestionListComponent = ({ suggestions, selectOption }) => {
     selectOption(item);
   };
 
-  const listStyle = {
-    margin: "0 auto",
-    height: "3.5em",
-    border: "black 2px solid",
-    background: "white",
-    borderRadius: "11px",
-    color: "black"
-  };
-
   return (
     <List
+      className="suggestion-list"
       itemLayout="horizontal"
       dataSource={suggestions}
       renderItem={item => (
-        <List.Item style={listStyle}>
+        <List.Item className="suggestion-list-item">
           <List.Item.Meta
             avatar={<Avatar src={ImageMap[item.name]} />}
             title={

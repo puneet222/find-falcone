@@ -11,6 +11,7 @@ import {
   selectPlanet,
   removePlanet
 } from "../../actions/planetActions";
+import "./Planet.css";
 import { getToken } from "../../actions/appActions";
 
 const Planets = ({
@@ -45,9 +46,15 @@ const Planets = ({
   };
 
   return (
-    <div
-      style={{ backgroundColor: "black", position: "relative", top: "27vh" }}
-    >
+    <div className="planets-container">
+      <Row>
+        <Col>
+          <div className="planets-info">
+            Flacone is escaped to some other planet.... <br />
+            Select the planets in which you think Falcone might be hiding.
+          </div>
+        </Col>
+      </Row>
       <Row>
         <Col xs={2} md={8}></Col>
         <Col xs={20} md={8}>

@@ -8,6 +8,7 @@ import {
   incrementVehicleCount,
   decrementVehicleCount
 } from "../../actions/vechicleActions";
+import "./Vehicle.css";
 import PlanetItem from "../planets/PlanetItem";
 import AvailableVehicles from "./AvailableVehicles";
 import FindFalconeButton from "../falcone/FindFalconeButton";
@@ -39,9 +40,7 @@ const Vehicles = ({
   };
 
   return (
-    <div
-      style={{ backgroundColor: "black", position: "relative", top: "15vh" }}
-    >
+    <div className="vehicle-container">
       {selectedPlanets &&
         selectedPlanets.map((planet, index) => {
           return (

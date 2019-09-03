@@ -1,0 +1,30 @@
+@import url(https://fonts.googleapis.com/css?family=Hepta+Slab&display=swap);
+
+.planets-container {
+  background-color: black;
+  position: relative;
+  top: 15vh;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.planets-info {
+  font-family: "Hepta Slab" serif;
+  color: wheat;
+  padding: 3%;
+}
+
+.suggestion-list {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.suggestion-list-item {
+  margin: 0 auto;
+  height: 3.5em;
+  border: black 2px solid;
+  background: white;
+  border-radius: 11px;
+  color: black;
+}

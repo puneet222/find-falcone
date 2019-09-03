@@ -49,7 +49,7 @@ const FindFalcone = ({
   };
 
   return (
-    <div style={{ position: "relative", top: "15vh", color: "wheat" }}>
+    <div className="falcone-container">
       <Row>
         <Col xs={2} md={6}></Col>
         <Col xs={20} md={12}>
