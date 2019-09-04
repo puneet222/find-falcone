@@ -61,7 +61,7 @@ const Planets = ({
           <AutoComplete suggestions={planets} onPlanetSelect={onPlanetSelect} />
         </Col>
       </Row>
-      <Row style={{ padding: "8%" }}>
+      <Row style={{ padding: "4%" }}>
         {selectedPlanets &&
           selectedPlanets.map((planet, index) => {
             return (

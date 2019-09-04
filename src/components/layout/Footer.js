@@ -7,8 +7,8 @@ const Footer = () => {
   return (
     <div>
       <Footer className="footer">
-        <span className="dev">Developed by : </span>
-        <span className="name">Puneet Aggarwal</span>
+        <span className="dev">Developed for : </span>
+        <span className="name">geektrust.in</span>
       </Footer>
     </div>
   );
