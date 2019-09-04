@@ -6,4 +6,22 @@
   padding-left: 12%;
   padding-bottom: 10%;
   display: flow-root;
+  color: wheat;
+}
+
+.commonStyle {
+  border: wheat solid 1px;
+  border-radius: 20px;
+  padding: 5px;
+  color: wheat;
+  margin: 10px;
+}
+
+.hoverStyle {
+  background: blue;
+  cursor: pointer;
+}
+
+.time {
+  color: wheat;
 }

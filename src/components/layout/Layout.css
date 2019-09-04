@@ -1,0 +1,12 @@
+.footer {
+  text-align: center;
+  width: 100vw;
+  position: fixed;
+  bottom: 0px;
+}
+
+.header {
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+}

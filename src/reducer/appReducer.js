@@ -13,7 +13,8 @@ import {
   GET_TOKEN,
   FIND_FALCONE_SUCCESS,
   FIND_FALCONE_FAIL,
-  FIND_FALCONE_ERROR
+  FIND_FALCONE_ERROR,
+  UPDATE_TIME
 } from "../actions/types";
 
 const initialState = {
@@ -26,7 +27,8 @@ const initialState = {
   selectedPlanets: [],
   selectedVehicles: {},
   falconePlanet: null,
-  falconeSuccess: null
+  falconeSuccess: null,
+  totalTime: 0
 };
 
 export default (state = initialState, action) => {
@@ -142,6 +144,13 @@ export default (state = initialState, action) => {
         ...state,
         falconeSuccess: false,
         falconePlanet: null
+      };
+    }
+
+    case UPDATE_TIME: {
+      return {
+        ...state,
+        totalTime: action.payload
       };
     }
 

@@ -1,20 +1,12 @@
 import React from "react";
 import { Layout } from "antd";
+import "./Layout.css";
 
 const Footer = () => {
   const { Footer } = Layout;
   return (
     <div>
-      <Footer
-        style={{
-          textAlign: "center",
-          width: "100vw",
-          position: "fixed",
-          bottom: "0px"
-        }}
-      >
-        Ant Design ©2018 Created by Ant UED
-      </Footer>
+      <Footer className="footer">Ant Design ©2018 Created by Ant UED</Footer>
     </div>
   );
 };

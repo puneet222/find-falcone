@@ -5,7 +5,8 @@ import {
   ASSIGN_VEHICLE,
   UNASSIGN_VEHICLE,
   INCREMENT_VEHICLE_COUNT,
-  DECREMENT_VEHICLE_COUNT
+  DECREMENT_VEHICLE_COUNT,
+  UPDATE_TIME
 } from "./types";
 import { GET_VEHICLES_API } from "./apis";
 import axios from "axios";
@@ -57,5 +58,12 @@ export const unassignVehicle = planet => {
 export const setLoading = () => {
   return {
     type: SET_LOADING
+  };
+};
+
+export const updateTime = time => {
+  return {
+    type: UPDATE_TIME,
+    payload: time
   };
 };

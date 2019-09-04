@@ -20,6 +20,7 @@ const Vehicles = ({
   getVehicles,
   history,
   maxSelection,
+  totalTime,
   incrementVehicleCount,
   decrementVehicleCount
 }) => {
@@ -41,6 +42,11 @@ const Vehicles = ({
 
   return (
     <div className="vehicle-container">
+      {totalTime > 0 && (
+        <div className="time-div">
+          <h3 className="time">Total Time : {totalTime}</h3>
+        </div>
+      )}
       {selectedPlanets &&
         selectedPlanets.map((planet, index) => {
           return (
@@ -67,7 +73,8 @@ const mapStateToParams = state => ({
   vehicles: state.app.vehicles,
   availableVehicles: state.app.availableVehicles,
   selectedPlanets: state.app.selectedPlanets,
-  selectedVehicles: state.app.selectedVehicles
+  selectedVehicles: state.app.selectedVehicles,
+  totalTime: state.app.totalTime
 });
 
 Vehicles.propTypes = {
@@ -77,6 +84,7 @@ Vehicles.propTypes = {
   getVehicles: PropTypes.func.isRequired,
   history: PropTypes.object,
   maxSelection: PropTypes.number.isRequired,
+  totalTime: PropTypes.number.isRequired,
   incrementVehicleCount: PropTypes.func.isRequired,
   decrementVehicleCount: PropTypes.func.isRequired
 };

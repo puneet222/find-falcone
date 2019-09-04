@@ -4,17 +4,11 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const FindFalconeButton = ({ selectedVehicles, maxSelection }) => {
-  const buttonStyle = {
-    position: "fixed",
-    zIndex: "90",
-    bottom: "15%",
-    right: "2%"
-  };
   return (
     Object.keys(selectedVehicles).length === maxSelection && (
       <Link to="/findFalcone">
         <Button
-          style={buttonStyle}
+          className="falcone-button"
           type="danger"
           shape="round"
           icon="search"

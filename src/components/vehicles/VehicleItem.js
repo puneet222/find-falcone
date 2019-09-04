@@ -3,7 +3,11 @@ import { Avatar, Badge, Row, Col, message } from "antd";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { unassignVehicle, assignVehicle } from "../../actions/vechicleActions";
+import {
+  unassignVehicle,
+  assignVehicle,
+  updateTime
+} from "../../actions/vechicleActions";
 import { ImageMap } from "./imageMap";
 
 const VehicleItem = ({
@@ -13,48 +17,49 @@ const VehicleItem = ({
   decrementVehicle,
   selectedVehicles,
   assignVehicle,
-  unassignVehicle
+  unassignVehicle,
+  updateTime,
+  vehicles,
+  totalTime
 }) => {
   const [hover, setHover] = useState(false);
-  let commonStyle = {
-    border: "wheat solid 1px",
-    borderRadius: "20px",
-    padding: "5px",
-    color: "wheat",
-    margin: "10px"
-  };
-  const listStyle = {
-    ...commonStyle
-  };
-  const hoverListStyle = {
-    ...commonStyle,
-    background: "blue",
-    cursor: "pointer"
-  };
   const toggleHover = () => {
     setHover(!hover);
   };
+  const getVehicleSpeed = vehicle => {
+    let v = vehicles.filter(v => v.name === vehicle);
+    return v ? v[0]["speed"] : -1;
+  };
+  const getTime = (planet, vehicle) => {
+    let s = planet.distance / getVehicleSpeed(vehicle);
+    return s;
+  };
   const onClick = () => {
     if (vehicle.total_no > 0) {
+      let time = totalTime;
       if (selectedVehicles[planet.name]) {
         incrementVehicle(selectedVehicles[planet.name]);
         unassignVehicle(planet);
+        time -= getTime(planet, selectedVehicles[planet.name]);
       }
       assignVehicle(planet, vehicle);
       decrementVehicle(vehicle.name);
+      time += getTime(planet, vehicle.name);
+      updateTime(time);
     } else {
       message.warning("Insufficient Quantity");
     }
   };
+  let divClass = `commonStyle ${
+    selectedVehicles[planet.name] === vehicle.name
+      ? "hoverStyle"
+      : hover
+      ? "hoverStyle"
+      : "commonStyle"
+  }`;
   return (
     <div
-      style={
-        selectedVehicles[planet.name] === vehicle.name
-          ? hoverListStyle
-          : hover
-          ? hoverListStyle
-          : listStyle
-      }
+      className={divClass}
       onMouseEnter={toggleHover}
       onMouseLeave={toggleHover}
       onClick={onClick}
@@ -82,14 +87,19 @@ VehicleItem.propTypes = {
   decrementVehicle: PropTypes.func.isRequired,
   selectedVehicles: PropTypes.object,
   assignVehicle: PropTypes.func.isRequired,
-  unassignVehicle: PropTypes.func.isRequired
+  unassignVehicle: PropTypes.func.isRequired,
+  updateTime: PropTypes.func.isRequired,
+  vehicles: PropTypes.array.isRequired,
+  totalTime: PropTypes.number.isRequired
 };
 
 const mapStateToProps = state => ({
-  selectedVehicles: state.app.selectedVehicles
+  selectedVehicles: state.app.selectedVehicles,
+  totalTime: state.app.totalTime,
+  vehicles: state.app.vehicles
 });
 
 export default connect(
   mapStateToProps,
-  { assignVehicle, unassignVehicle }
+  { assignVehicle, unassignVehicle, updateTime }
 )(VehicleItem);
