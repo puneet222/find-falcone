@@ -28,7 +28,12 @@ const AutoComplete = ({ suggestions, onPlanetSelect }) => {
 
   return (
     <Fragment>
-      <Input type="text" onChange={onChange} value={userInput} />
+      <Input
+        placeholder="Search Planets..."
+        type="text"
+        onChange={onChange}
+        value={userInput}
+      />
       {showSuggestions && userInput && (
         <SuggestionListComponent
           suggestions={filteredSuggestions}

@@ -3,10 +3,22 @@
   width: 100vw;
   position: fixed;
   bottom: 0px;
+  padding: 1%;
+  background: rgb(49, 43, 43);
+  color: greenyellow;
 }
 
 .header {
   position: fixed;
   z-index: 99;
   width: 100%;
+}
+
+.dev {
+  font-family: monospace;
+}
+
+.name {
+  font-family: cursive;
+  font-size: 1.2em;
 }

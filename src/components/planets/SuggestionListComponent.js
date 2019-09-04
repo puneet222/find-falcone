@@ -2,6 +2,7 @@ import React from "react";
 import { List, Avatar } from "antd";
 import PropTypes from "prop-types";
 import { ImageMap } from "./imageMap";
+import "./Planet.css";
 
 const SuggestionListComponent = ({ suggestions, selectOption }) => {
   const onClick = item => {
@@ -16,6 +17,7 @@ const SuggestionListComponent = ({ suggestions, selectOption }) => {
       renderItem={item => (
         <List.Item className="suggestion-list-item">
           <List.Item.Meta
+            style={{ paddingLeft: "2%" }}
             avatar={<Avatar src={ImageMap[item.name]} />}
             title={
               <a
@@ -24,7 +26,6 @@ const SuggestionListComponent = ({ suggestions, selectOption }) => {
                 onClick={() => onClick(item)}
               >
                 <span style={{ color: "black" }}>{item.name}</span>
-                <span style={{ color: "grey" }}>{item.distance}</span>
               </a>
             }
           />

@@ -50,8 +50,8 @@ const Planets = ({
       <Row>
         <Col>
           <div className="planets-info">
-            Flacone is escaped to some other planet.... <br />
-            Select the planets in which you think Falcone might be hiding.
+            Flacone is escaped to some other planet... <br />
+            Pick you planets and start searching...
           </div>
         </Col>
       </Row>
@@ -75,6 +75,9 @@ const Planets = ({
             );
           })}
       </Row>
+      {selectedPlanets.length > 0 && (
+        <h4 className="touch-info">Click to remove the planets</h4>
+      )}
       {selectedPlanets.length === maxSelection && (
         <Link to="/vehicles">
           <Button

@@ -43,7 +43,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         planets: action.payload,
-        selectedPlanets: action.payload,
         loading: false
       };
     }
@@ -107,7 +106,6 @@ export default (state = initialState, action) => {
     }
 
     case INCREMENT_VEHICLE_COUNT: {
-      console.log("increment : ", action.payload);
       return {
         ...state,
         availableVehicles: state.availableVehicles.map(vehicle => {
@@ -151,6 +149,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         totalTime: action.payload
+      };
+    }
+
+    case FIND_FALCONE_ERROR: {
+      return {
+        ...state,
+        error: action.payload
       };
     }
 

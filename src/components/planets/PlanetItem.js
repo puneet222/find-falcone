@@ -5,7 +5,7 @@ import "./Planet.css";
 
 const PlanetItem = ({ planet, removePlanet }) => {
   return (
-    <div style={{ color: "white" }} onClick={() => removePlanet(planet)}>
+    <div className="planet-item" onClick={() => removePlanet(planet)}>
       <img alt={planet.name} width={100} src={ImageMap[planet.name]} />
       <h4 className="info-style">
         <strong>{planet.name}</strong>
