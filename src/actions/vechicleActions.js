@@ -27,18 +27,18 @@ export const getVehicles = () => async dispatch => {
   }
 };
 
-export const incrementVehicleCount = vehicle => async dispatch => {
-  dispatch({
+export const incrementVehicleCount = vehicle => {
+  return {
     type: INCREMENT_VEHICLE_COUNT,
     payload: vehicle
-  });
+  };
 };
 
-export const decrementVehicleCount = vehicle => async dispatch => {
-  dispatch({
+export const decrementVehicleCount = vehicle => {
+  return {
     type: DECREMENT_VEHICLE_COUNT,
     payload: vehicle
-  });
+  };
 };
 
 export const assignVehicle = (planet, vehicle) => {
