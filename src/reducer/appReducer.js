@@ -17,7 +17,7 @@ import {
   UPDATE_TIME
 } from "../actions/types";
 
-const initialState = {
+export const initialState = {
   token: null,
   loading: false,
   planets: [],
